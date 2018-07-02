@@ -6,23 +6,23 @@ class Show < ActiveRecord::Base
   # ratings_sum: returns the sum of all of the ratings.
   # popular_shows: returns an array of all of the shows that have a rating greater than 5. hint: use the where Active Record method.
   # shows_by_alphabetical_order: returns an array of all of the shows sorted by alphabetical order according to their names. hint: use the order Active Record method.
-  def highest_rating
+  def self.highest_rating
     Show.maximum(:rating)
   end
 
-  def most_popular_show
+  def self.most_popular_show
     Show.where("rating = ?", highest_rating)
   end
 
-  def lowest_rating
+  def self.lowest_rating
     Show.minimum(:rating)
   end
 
-  def least_popular_show
+  def self.least_popular_show
     Show.where("rating = ?", lowest_rating)
   end
 
-  def ratings_sum
+  def self.ratings_sum
     Show.sum(:rating)
   end
 
